@@ -1,6 +1,7 @@
-<p style="display: flex; justify-content: center; font-size: x-large;">signup works!</p>
+<body>
+    <section class="signup-form" >
+    <p style="display: flex; justify-content: center; font-size: x-large;">signup works!</p>
 
-<section class="signup-form" >
     <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #f="ngForm" (ngSubmit)="onSubmit(f)">
         <mat-form-field>
             <mat-label>E-mail</mat-label>
@@ -52,7 +53,7 @@
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
 
-        <mat-checkbox ngModel name="agree" required class="example-margin">Concordo com os termos e condições !</mat-checkbox>
+         <mat-checkbox color="white" ngModel name="agree" required class="example-margin" style="color: white;" >Concordo com os termos e condições !</mat-checkbox>
 
           
         <div style="display: flex; gap: 20px;">
@@ -62,3 +63,4 @@
 
     </form>
 </section>
+</body>
