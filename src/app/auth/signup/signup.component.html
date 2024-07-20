@@ -4,15 +4,38 @@
     <form fxLayout="column" fxLayoutAlign="center center" #f="ngForm" (ngSubmit)="onSubmit(f)">
         <mat-form-field>
             <mat-label>E-mail</mat-label>
-            <input ngModel name="email" matInput>
-          </mat-form-field>
+             <input
+              ngModel
+              matInput
+              name="email"
+              email="true"
+              type="email"
+              required
+              #emailInput="ngModel"
+              >
+              <mat-error *ngIf="emailInput.hasError('required')" >O campo não deve estar vazio!</mat-error>
+              <mat-error *ngIf="!emailInput.hasError('required')" >E-mail inválido!</mat-error>
 
-          <mat-form-field>
+        </mat-form-field>
+
+        <mat-form-field>
             <mat-label>Senha</mat-label>
-            <input ngModel name="password" matInput>
-          </mat-form-field>
+              <input 
+              ngModel
+              matInput
+              name="password"
+              type="password"
+              required
+              minlength="6"
+              #pwInput="ngModel"
+              >
+              <mat-hint>Minimo 6 caracteres</mat-hint>
+              <mat-hint align="end" >{{pwInput.value?.length}} / 6</mat-hint>
+              <mat-error>Precisa que ter pelo menos 6 caracteres!</mat-error>
 
-            <button type="submit " mat-raised-button color="primary">Cadastrar</button>
-            <button mat-raised-button color="accent">Criar conta</button>
+        </mat-form-field>
+
+        <button type="submit " mat-raised-button color="primary">Cadastrar</button>
+        <button mat-raised-button color="accent">Criar conta</button>
     </form>
 </section>
