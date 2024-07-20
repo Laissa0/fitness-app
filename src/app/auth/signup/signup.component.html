@@ -1,1 +1,66 @@
-<p>signup works!</p>
+<body>
+    <section class="signup-form" >
+    <p style="display: flex; justify-content: center; font-size: x-large;">signup works!</p>
+
+    <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <mat-form-field>
+            <mat-label>E-mail</mat-label>
+             <input
+              ngModel
+              matInput
+              name="email"
+              email="true"
+              type="email"
+              required
+              #emailInput="ngModel"
+              >
+              <mat-error *ngIf="emailInput.hasError('required')" >O campo não deve estar vazio!</mat-error>
+              <mat-error *ngIf="!emailInput.hasError('required')" >E-mail inválido!</mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Senha</mat-label>
+              <input 
+              ngModel
+              matInput
+              name="password"
+              type="password"
+              required
+              minlength="6"
+              #pwInput="ngModel"
+              >
+              <mat-hint>Minimo 6 caracteres</mat-hint>
+              <mat-hint align="end" >{{pwInput.value?.length}} / 6</mat-hint>
+              <mat-error>Precisa que ter pelo menos 6 caracteres!</mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Choose a date</mat-label>
+            <input 
+            matInput 
+            [matDatepicker]="picker"
+            [max]="maxDate"
+            ngModel
+            name="birthDate"
+            required
+            >
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <!-- <mat-error>Precisa ter +18.</mat-error> -->
+
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+         <mat-checkbox color="white" ngModel name="agree" required class="example-margin" style="color: white;" >Concordo com os termos e condições !</mat-checkbox>
+
+          
+        <div style="display: flex; gap: 20px;">
+            <button type="submit " mat-flat-button color="primary" [disabled]="f.invalid" >Cadastrar</button>
+            <button mat-raised-button routerLink="/login" color="accent">Já tenho uma conta</button>
+        </div>
+
+    </form>
+</section>
+</body>
